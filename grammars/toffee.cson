@@ -1,0 +1,34 @@
+# If this is your first time writing a language grammar, check out:
+#   - http://manual.macromates.com/en/language_grammars
+
+scopeName: 'source.toffee'
+name: 'Toffee'
+fileTypes: [
+  'coffee.toffee'
+]
+patterns: [
+  include: "#innerTemplate"
+  {
+    name: "coffeeTemplateLogic"
+    begin: '\{#'
+    end: '#\}'
+    patterns: [
+      include: "#innerTemplate"
+      # include: "source.coffee"
+      # include: "$self"
+      include: "source.toffee"
+    ]
+  }
+  include: "source.coffee"
+]
+repository:
+  innerTemplate:
+    # name: "coffeeTemplate"
+    contentName: "coffeeTemplate"
+    begin: '\{:'
+    end: ':\}'
+    patterns: [
+      # include: "source.coffee"
+      include: "source.toffee"
+      # include: "text.plain"
+    ]
